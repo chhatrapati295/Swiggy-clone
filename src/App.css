@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
-body{
+
+body {
   font-family: 'Lato', sans-serif;
 }
-::-webkit-scrollbar{
+
+.hide_scroll::-webkit-scrollbar {
   display: none;
 }

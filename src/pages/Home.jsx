@@ -1,10 +1,8 @@
 import Body from "../components/Body"
-import Header from "../components/Header"
 
 const Home = () => {
   return (
-    <div>
-      <Header/>
+    <div className="flex justify-center">
       <Body/>
     </div>
   )

@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 
 const ResCard = ({ resData }) => {
   return (
-    <div className="min-w-[300px]  flex flex-col gap-1">
+    <div className="min-w-[280px] flex flex-col gap-1 hover:scale-95 transition-all duration-200">
       <img
         src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${resData?.cloudinaryImageId}`}
         alt="res image"
-        className="w-full object-cover h-[180px] rounded-2xl"
+        className="w-full h-48 object-cover rounded-2xl"
       />
-      <span className="text-lg font-semibold">{resData?.name}</span>
-      <div className="flex items-center gap-2 font-semibold text-sm">
+      <span className="text-lg font-semibold mx-2">{resData?.name}</span>
+      <div className="flex items-center gap-2 font-semibold text-sm mx-2">
         <svg
           width="20"
           height="20"
@@ -48,8 +48,13 @@ const ResCard = ({ resData }) => {
         <div className="h-1 w-1 bg-black rounded-full"></div>
         <span className="">{resData?.sla?.slaString}</span>
       </div>
-      <p className="text-sm text-gray-500 ">{resData?.cuisines && (resData?.cuisines?.length <=3 ? resData?.cuisines?.join(" , ") : resData?.cuisines?.slice(0,3)?.join(' , ')  )}</p>
-      <p className="text-sm text-gray-500 ">{resData?.areaName}</p>
+      <p className="text-sm text-gray-500  mx-2">
+        {resData?.cuisines &&
+          (resData?.cuisines?.length <= 3
+            ? resData?.cuisines?.join(" , ")
+            : resData?.cuisines?.slice(0, 3)?.join(" , "))}
+      </p>
+      <p className="text-sm text-gray-500  mx-2">{resData?.areaName}</p>
     </div>
   );
 };

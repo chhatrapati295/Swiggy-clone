@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import loader from "../assets/coffee.gif";
 import ResCard from "./ResCard";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const locData = useSelector((state) => state.loc.locData);
@@ -76,7 +77,7 @@ const Body = () => {
   };
 
   return (
-    <div className="my-4 mx-6 flex  justify-center items-center flex-col gap-3 rounded-md ">
+    <div className="my-4 mx-6 flex  justify-center items-center flex-col gap-3 rounded-md w-[75%] mt-24 ">
       {bannerData && !loading && (
         <div className="flex flex-col gap-3 w-full">
           <div className="flex justify-between items-center gap-2">
@@ -99,7 +100,7 @@ const Body = () => {
             )}
           </div>
           <div
-            className="flex w-full overflow-x-scroll scroll_bar gap-8 pb-4 ml-0 transition-all duration-75"
+            className="flex w-full hide_scroll overflow-x-scroll scroll_bar gap-8 pb-4 ml-0 transition-all duration-75"
             ref={scrollContainerRef}
           >
             {bannerData?.map((item) => {
@@ -143,7 +144,7 @@ const Body = () => {
             </div>
           </div>
           <div
-            className="flex w-full overflow-x-scroll scroll_bar gap-8 pb-4 ml-0 transition-all duration-75"
+            className="flex w-full hide_scroll overflow-x-scroll scroll_bar gap-8 pb-4 ml-0 transition-all duration-75"
             ref={scrollContainerRef2}
           >
             {whatsMind?.map((item) => {
@@ -152,7 +153,7 @@ const Body = () => {
                   key={item?.id}
                   src={`https://media-assets.swiggy.com/swiggy/image/upload/${item?.imageId}`}
                   alt="banner_image"
-                  className="w-24 cursor-pointer"
+                  className="w-36 cursor-pointer"
                 />
               );
             })}
@@ -185,12 +186,12 @@ const Body = () => {
             </div>
           </div>
           <div
-            className="flex overflow-x-auto w-full gap-6 sm_scroll"
+            className="flex hide_scroll overflow-x-auto w-full gap-10 sm_scroll"
             ref={scrollContainerRef3}
           >
             {restaurants[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.map(
               (item, i) => {
-                return <ResCard key={i} resData={item?.info} />;
+                return <Link to={'/res/' + item?.info?.id} key={i}><ResCard resData={item?.info} /></Link>;
               }
             )}
           </div>
@@ -236,12 +237,13 @@ const Body = () => {
           })}
         </div> */}
         <div
-          className="flex overflow-x-auto w-full gap-6 sm_scroll"
+          className="flex hide_scroll overflow-x-auto w-full gap-10 sm_scroll"
           ref={scrollContainerRef3}
         >
           {restaurants[5]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants?.map((item, i) => {
-            return <ResCard key={i} resData={item?.info} />;
+            // return <ResCard key={i} resData={item?.info} />;
+            return <Link to={'/res/' + item?.info?.id} key={i}><ResCard key={i} resData={item?.info} /></Link>;
           })}
         </div>
         <div className="m-auto w-48 h-4"></div>
